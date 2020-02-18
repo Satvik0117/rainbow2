@@ -1,0 +1,17 @@
+<%- include('partials/header'); -%>
+<div class="container">
+  <h2>Enter the Brand Details</h2>
+<form action="/admin/add-brand" method="POST">
+        <!-- Product type	Brand Name	Discounted Price	Original Price	Short Description	Long Description	Specifications/Ingrediants	Usage	image name -->
+
+        <div class="form-group">
+            <label for="exampleFormControlInput1">Brand name</label>
+            <input  class="form-control" name="brand_name" required>
+          </div>
+         
+      <button type="submit" class="btn btn-primary">Submit</button>
+
+    </form>
+</div>
+
+<%- include('partials/footer'); -%>

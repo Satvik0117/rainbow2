@@ -1,0 +1,48 @@
+<%- include('partials/header'); -%>
+
+<div class="container">
+    <h2>Brands</h2>
+    
+    
+    
+    
+    <a href="/admin/add-brand" class="btn btn-primary"> Add Brands </a>
+    
+    
+    
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Brands</th>
+          <!-- <th scope="col">Edit</th>
+          <th scope="col">Delete</th> -->
+        </tr>
+      </thead>
+      <tbody>
+    <%brands.forEach(function(cat){ %>
+    
+        <tr id="<%=cat._id%>">
+          <td> <%=cat.name%></td>
+          <!-- <td> <a ="/admin/categories/edit-category/<%=cat._id%>" >Edit </a></td>
+          <td> <a class="confirmDeletion" href="/admin/categories/delte-category/<%=cat._id%>" >Delete </a></td> -->
+        <td>
+            <form style="display: inline" method="POST" action="/admin/brands/delete/<%=cat._id%>">
+                <button id="delete_button" type="submit">
+                    <i class="fa fa-trash-o" style="font-size:28px;color:red"></i>
+                
+                </button>
+            </form>
+        </td>
+       
+    
+    </tr>
+    <% }); %>
+        
+      </tbody>
+    </table>
+        
+    
+    </div>
+
+
+<%- include('partials/footer'); -%>

@@ -1,0 +1,18 @@
+<%- include('partials/header'); -%>
+<div class="container">
+  <h2>Enter the Category Details</h2>
+
+<form action="/admin/add-category" method="POST">
+        <!-- Product type	Brand Name	Discounted Price	Original Price	Short Description	Long Description	Specifications/Ingrediants	Usage	image name -->
+
+        <div class="form-group">
+            <label for="exampleFormControlInput1">Category name</label>
+            <input  class="form-control" name="category_name" required>
+          </div>
+         
+      <button type="submit" class="btn btn-primary">Submit</button>
+
+    </form>
+</div>
+
+<%- include('partials/footer'); -%>

@@ -1,0 +1,98 @@
+<%- include('partials/header'); -%>
+<div class="container">
+  <h2>Enter the Product Details</h2>
+
+<form action="/admin/add-product" method="POST" enctype="multipart/form-data">
+        <!-- Product type	Brand Name	Discounted Price	Original Price	Short Description	Long Description	Specifications/Ingrediants	Usage	image name -->
+
+        <% var brands=JSON.parse(data).brands;%>
+				<% var categories=JSON.parse(data).categories;%>
+
+        <div class="form-group">
+            <label for="exampleFormControlInput1">Product name</label>
+            <input  class="form-control" name="product_name" required>
+          
+          </div>
+          
+          
+          <div class="form-group">
+              <label for="exampleFormControlInput1">Brand Name</label>
+              <!-- <input  class="form-control" name="brand_name" required> -->
+              <select class="form-control" id="" name="brand_name">
+                <!-- <option></option> -->
+                <option value="" disabled selected>Select the Brand</option>
+                <%brands.forEach(function(brand){ %>
+                      <option><%=brand.name%></option>
+                <% }); %>
+                      
+                    </select>
+            
+            </div>
+            
+            
+            <div class="form-group">
+              <label for="exampleFormControlInput1">Category</label>
+              <!-- <input  class="form-control" name="category" required> -->
+              <select class="form-control" id="" name="category">
+                <option value="" disabled selected>Select the Category</option>
+
+                <%categories.forEach(function(cat){ %>
+                      <option><%=cat.name%></option>
+                <% }); %>
+                      
+                    </select>
+            </div>
+            
+            
+            <div class="form-group">
+              <label for="exampleFormControlInput1">Original Price</label>
+              <input  class="form-control" name="original_price" required>
+            </div> <div class="form-group">
+              <label for="exampleFormControlInput1">Discounted Price</label>
+              <input  class="form-control" name="discounted_price" required>
+            </div> <div class="form-group">
+              <label for="exampleFormControlInput1">Short Description</label>
+              <input  class="form-control" name="short_description" required>
+            </div> <div class="form-group">
+              <label for="exampleFormControlInput1">Long Description</label>
+              <input  class="form-control" name="long_description" required>
+            </div>
+            <div class="form-group">
+              <label for="exampleFormControlInput1">Specifications/Ingrediants</label>
+              <input  class="form-control" name="specifications"required >
+            </div><div class="form-group">
+              <label for="exampleFormControlInput1">Usage</label>
+              <input  class="form-control" name="usage" required>
+            </div>
+            
+    <div class="form-group">
+        <label for="exampleFormControlFile1">Image of the Product</label>
+        <input type="file" name="image" class="form-control-file"  id="exampleFormControlFile1">
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+
+    </form>
+</div>
+    <!-- <div class="form-group">
+      <label for="exampleFormControlSelect1"></label>
+      <select class="form-control" id="exampleFormControlSelect1">
+        
+        <option>1</option>
+        
+      </select>
+    </div> -->
+    <!-- <div class="form-group">
+      <label for="exampleFormControlSelect2">Example multiple select</label>
+      <select multiple class="form-control" id="exampleFormControlSelect2">
+        
+        <option>1</option>
+        
+      </select>
+    </div> -->
+    <!-- <div class="form-group">
+      <label for="exampleFormControlTextarea1">Example textarea</label>
+      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+    </div> -->
+
+
+<%- include('partials/footer'); -%>

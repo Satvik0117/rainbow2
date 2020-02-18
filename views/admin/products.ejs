@@ -1,0 +1,61 @@
+<%- include('partials/header'); -%>
+
+<div class="container">
+    <h2>Products</h2>
+    
+    
+    
+    
+    <a href="/admin/add-product" class="btn btn-primary"> Add Product </a>
+    
+    
+    
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Product</th>
+          <th scope="col">Brand</th>
+          <th scope="col">Category</th>
+
+          <th scope="col">Original Price</th>
+          <th scope="col">Discounted Price</th>
+
+          <!-- <th scope="col">Edit</th>
+          <th scope="col">Delete</th> -->
+        </tr>
+      </thead>
+      <tbody>
+    <%products.forEach(function(cat){ %>
+    
+        <tr id="<%=cat._id%>">
+          <td> <%=cat.product_name%></td>
+          <!-- <td> <a ="/admin/categories/edit-category/<%=cat._id%>" >Edit </a></td>
+          <td> <a class="confirmDeletion" href="/admin/categories/delte-category/<%=cat._id%>" >Delete </a></td> -->
+          <td> <%=cat.brand_name%></td>
+          <td> <%=cat.category%></td>
+
+          <td> <%=cat.original_price%></td>
+          <td> <%=cat.discounted_price%></td>
+          <td><img style="width:100px;height:100px;" src="/uploads/<%=cat.image_path%>" ></td>
+
+          <td>
+            <form style="display: inline" method="POST" action="/admin/products/delete/<%=cat._id%>">
+                <button id="delete_button" type="submit">
+                    <i class="fa fa-trash-o" style="font-size:28px;color:red"></i>
+                
+                </button>
+            </form>
+        </td>
+       
+    
+    </tr>
+    <% }); %>
+        
+      </tbody>
+    </table>
+        
+    
+    </div>
+
+
+<%- include('partials/footer'); -%>
