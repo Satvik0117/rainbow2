@@ -196,10 +196,10 @@
                             <% var i=0;%>
                             <%brands.forEach(function(brand){ %>
                             <%    if(i==0){ %>
-                                <li><a class="nav-link active" id="home-tab<%=brand.name.replace(/ /g,'').replace(/[^A-Z0-9]/ig, '_')%>" data-toggle="tab" href="#<%=brand.name%>"><%=brand.name%></a></li>
+                                <li><a class="nav-link active" id="home-tab<%=brand.name.replace(/ /g,'').replace(/[^A-Z0-9]/ig, '_')%>" data-toggle="tab" href="#<%=brand.name.replace(/ /g,'').replace(/[^A-Z0-9]/ig, '_')%>"><%=brand.name%></a></li>
                                
                            <% }else{ %>
-                                <li><a class="nav-link" id="home-tab<%=brand.name.replace(/ /g,'').replace(/[^A-Z0-9]/ig, '_')%>" data-toggle="tab" href="#<%=brand.name%>"><%=brand.name%></a></li>
+                                <li><a class="nav-link" id="home-tab<%=brand.name.replace(/ /g,'').replace(/[^A-Z0-9]/ig, '_')%>" data-toggle="tab" href="#<%=brand.name.replace(/ /g,'').replace(/[^A-Z0-9]/ig, '_')%>"><%=brand.name%></a></li>
 
                             <%    }     %>
 
@@ -342,10 +342,10 @@
                             <% var i=0;%>
                             <%categories.forEach(function(category){ %>
                             <%    if(i==0){ %>
-                                <li><a class="nav-link active" id="home-tab<%=category.name.replace(/ /g,'').replace(/[^A-Z0-9]/ig, '_')%>" data-toggle="tab" href="#<%=category.name%>"><%=category.name%></a></li>
+                                <li><a class="nav-link active" id="home-tab<%=category.name.replace(/ /g,'').replace(/[^A-Z0-9]/ig, '_')%>" data-toggle="tab" href="#<%=category.name.replace(/ /g,'').replace(/[^A-Z0-9]/ig, '_')%>"><%=category.name%></a></li>
                                
                            <% }else{ %>
-                                <li><a class="nav-link" id="home-tab<%=category.name.replace(/ /g,'').replace(/[^A-Z0-9]/ig, '_')%>" data-toggle="tab" href="#<%=category.name%>"><%=category.name%></a></li>
+                                <li><a class="nav-link" id="home-tab<%=category.name.replace(/ /g,'').replace(/[^A-Z0-9]/ig, '_')%>" data-toggle="tab" href="#<%=category.name.replace(/ /g,'').replace(/[^A-Z0-9]/ig, '_')%>"><%=category.name%></a></li>
 
                             <%    }     %>
 
