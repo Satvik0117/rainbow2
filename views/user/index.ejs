@@ -13,15 +13,15 @@
     <link href="https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
 
     <!-- Css Styles -->
-    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
-    <link rel="stylesheet" href="css/themify-icons.css" type="text/css">
-    <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
-    <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
-    <link rel="stylesheet" href="css/nice-select.css" type="text/css">
-    <link rel="stylesheet" href="css/jquery-ui.min.css" type="text/css">
-    <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
-    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="/css/themify-icons.css" type="text/css">
+    <link rel="stylesheet" href="/css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="/css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="/css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="/css/jquery-ui.min.css" type="text/css">
+    <link rel="stylesheet" href="/css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
 </head>
 
 <body>
@@ -38,7 +38,7 @@
                     <div class="col-lg-2 col-md-2">
                         <div class="logo">
                             <a href="./index.html">
-                                <img src="img/logo.png" alt="">
+                                <img src="/img/logo.png" alt="">
                             </a>
                         </div>
                     </div>
@@ -80,8 +80,8 @@
             <div class="container">
                 <nav class="nav-menu mobile-menu">
                     <ul>
-                        <li class="active"><a href="./index.html">Home</a></li>
-                        <li><a href="./shop.html">All Products</a></li>
+                        <li class="active"><a href="/">Home</a></li>
+                        <li><a href="/all-products">All Products</a></li>
                         <li><a href="#brandsection">Brands</a></li>
                         <li><a href="#prodsection">Supplements</a></li>
                         <li><a href="./contact.html">Contact Us</a>
@@ -102,14 +102,14 @@
     <!-- Hero Section Begin -->
     <section class="hero-section">
         <div class="hero-items owl-carousel">
-            <div class="single-hero-items set-bg" data-setbg="img/hero-1.jpg">
+            <div class="single-hero-items set-bg" data-setbg="/img/hero-1.jpg">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-5">
                             <span>PROsTEINs</span>
                             <h1>PURE</h1>
                             <p>Super absorption & high protsein content. The gold league brands are here!</p>
-                            <a href="shop.html" class="primary-btn">Shop Now</a>
+                            <a href="/all-products" class="primary-btn">Shop Now</a>
                         </div>
                     </div>
                     <div class="off-card">
@@ -117,14 +117,14 @@
                     </div>
                 </div>
             </div>
-            <div class="single-hero-items set-bg" data-setbg="img/hero-2.jpg">
+            <div class="single-hero-items set-bg" data-setbg="/img/hero-2.jpg">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-5">
                             <span>NEW IN STORE</span>
                             <h1>DEALS</h1>
                             <p>Find exciting deals and amazing new products & new flavours! Check them out now.</p>
-                            <a href="shop.html" class="primary-btn">Shop Now</a>
+                            <a href="/all-products" class="primary-btn">Shop Now</a>
                         </div>
                     </div>
                     <div class="off-card">
@@ -142,7 +142,7 @@
             <div class="row">
                 <div class="col-6 col-md-3">
                     <div class="single-banner">
-                        <img src="img/banner-1.jpg" alt="">
+                        <img src="/img/banner-1.jpg" alt="">
                         <div class="inner-text">
                             <h4>Men’s</h4>
                         </div>
@@ -150,7 +150,7 @@
                 </div>
                 <div class="col-6 col-md-3">
                     <div class="single-banner">
-                        <img src="img/banner-2.jpg" alt="">
+                        <img src="/img/banner-2.jpg" alt="">
                         <div class="inner-text">
                             <h4>Women’s</h4>
                         </div>
@@ -158,7 +158,7 @@
                 </div>
                 <div class="col-6 col-md-3">
                     <div class="single-banner">
-                        <img src="img/banner-3.jpg" alt="">
+                        <img src="/img/banner-3.jpg" alt="">
                         <div class="inner-text">
                             <h4>Kid’s</h4>
                         </div>
@@ -166,7 +166,7 @@
                 </div>
                 <div class="col-6 col-md-3">
                     <div class="single-banner">
-                        <img src="img/banner-3.jpg" alt="">
+                        <img src="/img/banner-3.jpg" alt="">
                         <div class="inner-text">
                             <h4>Kid’s</h4>
                         </div>
@@ -187,7 +187,7 @@
                 <div class="col-lg-3">
                     <div class="product-large set-bg" data-setbg="img/products/women-large.jpg">
                         <h2>BRANDS</h2>
-                        <a href="shop.html">Discover More</a>
+                        <a href="/all-products">Discover More</a>
                     </div>
                 </div>
                 <div class="col-lg-9">
@@ -212,7 +212,7 @@
                      <%   for(var j=0;j<brands.length;j++){%>
                         <%    if(i==0){ %>
 
-					  <div class="tab-pane fade show active" id="<%=brands[j].name.replace(/ /g,'').replace(/[^A-Z0-9]/ig, "_")%>" role="tabpanel" aria-labelledby="home-tab<%=brands[j].name%>">
+					  <div class="tab-pane fade show active" id="<%=brands[j].name.replace(/ /g,'').replace(/[^A-Z0-9]/ig, '_')%>" role="tabpanel" aria-labelledby="home-tab<%=brands[j].name%>">
                        <div class="container">
             				<div class="row">
                                 <!--Product starts here-->
@@ -221,7 +221,7 @@
 
             					<div class="product-item col-md-3">
 		                            <div class="pi-pic">
-		                                <img src="/uploads/<%=product.image_path%>" alt="">
+		                                <img class="img-fluid img-responsive " src="/uploads/<%=product.image_path%>" alt="">
 		                                <!-- sale should be kept optional & appear if only there's a discount as mentioned in the product-price below-->
 		                                <div class="sale">SALE</div>
 		                                <div class="icon">
@@ -255,7 +255,7 @@
             			</div>
                       </div>
                       <% i++;}else{ %>
-                        <div class="tab-pane fade " id="<%=brands[j].name.replace(/ /g,'').replace(/[^A-Z0-9]/ig, "_")%>" role="tabpanel" aria-labelledby="home-tab<%=brands[j].name%>">
+                        <div class="tab-pane fade " id="<%=brands[j].name.replace(/ /g,'').replace(/[^A-Z0-9]/ig, '_')%>" role="tabpanel" aria-labelledby="home-tab<%=brands[j].name%>">
                             <div class="container">
                                  <div class="row">
                                      <!--Product starts here-->
@@ -326,7 +326,7 @@
                         <span>/ HanBag</span>
                     </div>
                 </div>
-                <a href="shop.html" class="primary-btn">Shop Now</a>
+                <a href="/all-products" class="primary-btn">Shop Now</a>
             </div>
         </div>
     </section>
@@ -357,7 +357,7 @@
                      <%   for(var j=0;j<categories.length;j++){%>
                         <%    if(i==0){ %>
                     
-                      <div class="tab-pane fade show active" id="<%=categories[j].name.replace(/ /g,'').replace(/[^A-Z0-9]/ig, "_")%>" role="tabpanel" aria-labelledby="home-tab<%=categories[j].name%>">
+                      <div class="tab-pane fade show active" id="<%=categories[j].name.replace(/ /g,'').replace(/[^A-Z0-9]/ig, '_')%>" role="tabpanel" aria-labelledby="home-tab<%=categories[j].name%>">
                        <div class="container">
                             <div class="row">
                                 <!--Product starts here-->
@@ -399,8 +399,8 @@
                             </div>
                         </div>
                       </div>
-                      <% i++;}else{ %>
-                        <div class="tab-pane fade " id="<%=categories[j].name.replace(/ /g,'').replace(/[^A-Z0-9]/ig, "_")%>" role="tabpanel" aria-labelledby="home-tab<%=categories[j].name%>">
+                      <% i++;}else{ i++;%>
+                        <div class="tab-pane fade " id="<%=categories[j].name.replace(/ /g,'').replace(/[^A-Z0-9]/ig, '_')%>" role="tabpanel" aria-labelledby="home-tab<%=categories[j].name%>">
                             <div class="container">
                                  <div class="row">
                                      <!--Product starts here-->
@@ -455,7 +455,7 @@
                <div class="col-lg-3">
                     <div class="product-large set-bg" data-setbg="img/products/women-large.jpg">
                         <h2>PRODUCTS</h2>
-                        <a href="shop.html">Discover More</a>
+                        <a href="/all-products">Discover More</a>
                     </div>
                 </div> 
             </div>
@@ -470,37 +470,37 @@
             <div class="logo-carousel owl-carousel">
                 <div class="logo-item">
                     <div class="tablecell-inner">
-                        <img src="img/logo-carousel/logo-1.png" alt="">
+                        <img src="/img/logo-carousel/logo-1.png" alt="">
                     </div>
                 </div>
                 <div class="logo-item">
                     <div class="tablecell-inner">
-                        <img src="img/logo-carousel/logo-1.png" alt="">
+                        <img src="/img/logo-carousel/logo-1.png" alt="">
                     </div>
                 </div>
                 <div class="logo-item">
                     <div class="tablecell-inner">
-                        <img src="img/logo-carousel/logo-1.png" alt="">
+                        <img src="/img/logo-carousel/logo-1.png" alt="">
                     </div>
                 </div>
                 <div class="logo-item">
                     <div class="tablecell-inner">
-                        <img src="img/logo-carousel/logo-2.png" alt="">
+                        <img src="/img/logo-carousel/logo-2.png" alt="">
                     </div>
                 </div>
                 <div class="logo-item">
                     <div class="tablecell-inner">
-                        <img src="img/logo-carousel/logo-3.png" alt="">
+                        <img src="/img/logo-carousel/logo-3.png" alt="">
                     </div>
                 </div>
                 <div class="logo-item">
                     <div class="tablecell-inner">
-                        <img src="img/logo-carousel/logo-4.png" alt="">
+                        <img src="/img/logo-carousel/logo-4.png" alt="">
                     </div>
                 </div>
                 <div class="logo-item">
                     <div class="tablecell-inner">
-                        <img src="img/logo-carousel/logo-5.png" alt="">
+                        <img src="/img/logo-carousel/logo-5.png" alt="">
                     </div>
                 </div>
             </div>
@@ -515,7 +515,7 @@
                 <div class="col-lg-3">
                     <div class="footer-left">
                         <div class="footer-logo">
-                            <a href="#"><img src="img/footer-logo.png" alt=""></a>
+                            <a href="#"><img src="/img/footer-logo.png" alt=""></a>
                         </div>
                         <ul>
                             <li>Address: 60-49 Road 11378 New York</li>
@@ -535,7 +535,7 @@
                         <h5>Information</h5>
                         <ul>
                             <li><a href="#">About Us</a></li>
-                            <li><a href="shop.html">All Products</a></li>
+                            <li><a href="/all-products">All Products</a></li>
                             <li><a href="#brandsection">Brands</a></li>
                             <li><a href="#prodsection">Supplements</a></li>
                         </ul>
@@ -567,16 +567,16 @@
     <!-- Footer Section End -->
 
     <!-- Js Plugins -->
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery-ui.min.js"></script>
-    <script src="js/jquery.countdown.min.js"></script>
-    <script src="js/jquery.nice-select.min.js"></script>
-    <script src="js/jquery.zoom.min.js"></script>
-    <script src="js/jquery.dd.min.js"></script>
-    <script src="js/jquery.slicknav.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/main.js"></script>
+    <script src="/js/jquery-3.3.1.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/jquery-ui.min.js"></script>
+    <script src="/js/jquery.countdown.min.js"></script>
+    <script src="/js/jquery.nice-select.min.js"></script>
+    <script src="/js/jquery.zoom.min.js"></script>
+    <script src="/js/jquery.dd.min.js"></script>
+    <script src="/js/jquery.slicknav.js"></script>
+    <script src="/js/owl.carousel.min.js"></script>
+    <script src="/js/main.js"></script>
 </body>
 
 </html>

@@ -24,6 +24,16 @@ router.get("/",function(req,res){
 
 });
 
+router.get("/all-products/",function(req,res){
+    Product.find(function(err,products){
+		if(err) return console.log(err);
+		res.render('user/shop',{
+			products:products
+		});
+    });
+});
+
+
 router.get("/product/:id",function(req,res){
     Product.findById(req.params.id, function(err, product){
         if(err){
