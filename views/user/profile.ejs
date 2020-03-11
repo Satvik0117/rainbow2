@@ -217,6 +217,7 @@
                                 <!-- </a> -->
                                 <!-- <p> -->
                                     <div class="row">
+                                     <%   if(orders){ %>
                                         <% var x=0;%>
                                         <%orders.forEach(function(order){ x++; %>
                                             <div style="margin-bottom:20px;" class="col-lg-6">
@@ -242,6 +243,7 @@
                                             </div>
                                         </div>
                                     <%   }); %>
+                                    <%   } %>
 
                                     </div>
                         <div class="posted-by">

@@ -75,7 +75,7 @@ router.get('/user/profile',isLoggedIn,function(req, res){
         // var key = Object.keys(orders[1].cart.items);
         // console.log(key[0]);
         // console.log('sdf');
-        console.log(orders[1].cart.items);
+        // console.log(orders[1].cart.items);
         // console.log( orders[1].cart.items[key[0]]);
         res.render('user/profile',{user:user,orders:orders});
     });
