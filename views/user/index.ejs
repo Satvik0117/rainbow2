@@ -25,6 +25,7 @@
 </head>
 
 <body>
+
     <!-- Page Preloder -->
     <div id="preloder">
         <div class="loader"></div>
@@ -35,42 +36,96 @@
         <div class="container">
             <div class="inner-header">
                 <div class="row">
-                    <div class="col-lg-2 col-md-2">
+                    <div class="col-lg-1 col-md-1">
                         <div class="logo">
-                            <a href="./index.html">
+                            <a href="/">
                                 <img src="/img/logo.png" alt="">
                             </a>
                         </div>
                     </div>
-                    <div class="col-lg-7 col-md-7">
-                        <div class="advanced-search d-flex flex-row">
-                            <div class="input-group">
-                                <input type="text" placeholder="What do you need?">
+                    <div class="col-lg-6 col-md-6">
+                        <form method="GET" action='/search'>
+
+                            <div class="advanced-search d-flex flex-row">
+                                <div class="input-group">
+                                    <form>
+                                    <input type="text" name="searchquery" placeholder="What do you need?">
+                                </div>
+                                <div class="input-group">
+                                    <button type="submit"><i class="ti-search"></i></button>
+                                </div>
                             </div>
-                            <div class="input-group">
-                                <button type="button"><i class="ti-search"></i></button>
-                            </div>
-                        </div>
+                        </form>
                     </div>
+
+                    
+                <%    if(inCartProducts){ %>
+
+                    <div class="col-lg-2 text-right col-md-2">
+                        <ul class="nav-right">
+                            <!-- <li class="heart-icon"><a href="#">
+                                    <i class="icon_heart_alt"></i>
+                                    <span>1</span>
+                                </a>
+                            </li> -->
+                            <li class="cart-icon"><a href="#">View Card
+                                    <i class="icon_bag_alt"></i>
+                                    <!-- <span>3</span> -->
+                                </a>
+                                <div class="cart-hover">
+                                    <div class="select-items">
+                                        <table>
+                                            <tbody>
+                                <%inCartProducts.forEach(function(product){ %>
+
+                                                <tr>
+                                                    <td class="si-pic"><img src="/uploads/<%=product.item.image_path%>" alt=""></td>
+                                                    <td class="si-text">
+                                                        <div class="product-selected">
+                                                            <p><%=product.item.discounted_price%> x <%=product.qty%></p>
+                                                            <h6><%=product.item.product_name%></h6>
+                                                        </div>
+                                                    </td>
+                                                    <!-- <td class="si-close">
+                                                        <i class="ti-close"></i>
+                                                    </td> -->
+                                                </tr>
+
+                                <%   }); %>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="select-total">
+                                        <span>total:</span>
+                                        <h5><%=totalPrice%></h5>
+                                    </div>
+                                    <div class="select-button">
+                                        <a href="/shopping-cart" class="primary-btn view-card">VIEW CART</a>
+                                        <a href="/checkout" class="primary-btn checkout-btn">CHECK OUT</a>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <% } %>
+
                     <div class="col-lg-3 text-right col-md-3">
                         <ul class="nav-right">
-                            <li class="heart-icon">
-                                <a href="#">
-                                    <i class="icon_heart_alt"></i>
-                                    <!--may be ignored for a while
-                                    <span>1</span>
-                                -->
-                                </a>
-                            </li>
+                            
                             <li class="cart-icon">
-                                <a href="#">
-                                    <i class="icon_bag_alt"></i>
-                                	<!--may be ignored for a while
+                                <a href="/shopping-cart">Shopping Cart
+                                    <i class="fa fa-shopping-cart"></i>
+                                   <% if(!((session==undefined)|| (session.cart==undefined))){ %>
+                                    <span class="badge"><%=session.cart.totalQty%> </span>
+                                   <% }%>
+                                    <!--may be ignored for a while
                                     <span>3</span>
                                 -->
                                 </a>
                             </li>
-                            <li><a href="#" class="login-panel"><i class="fa fa-user mr-1"></i>Login</a></li>
+                            <li><a href="/user/signin" class="login-panel"><i class="fa fa-user mr-1"></i>Login</a></li>
                         </ul>
                     </div>
                 </div>
@@ -81,10 +136,10 @@
                 <nav class="nav-menu mobile-menu">
                     <ul>
                         <li class="active"><a href="/">Home</a></li>
-                        <li><a href="/all-products">All Products</a></li>
-                        <li><a href="#brandsection">Brands</a></li>
-                        <li><a href="#prodsection">Supplements</a></li>
-                        <li><a href="./contact.html">Contact Us</a>
+                        <li  ><a href="/all-products">All Products</a></li>
+                        <li><a href="/#brandsection">Brands</a></li>
+                        <li><a href="/#prodsection">Supplements</a></li>
+                        <li><a href="/contact">Contact Us</a>
                             <!--
                             <ul class="dropdown">
                                 <li><a href="#">Men</a></li>
@@ -102,11 +157,11 @@
     <!-- Hero Section Begin -->
     <section class="hero-section">
         <div class="hero-items owl-carousel">
-            <div class="single-hero-items set-bg" data-setbg="/img/hero-1.jpg">
+            <!-- <div class="single-hero-items set-bg" data-setbg="/img/hero-1.jpg">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-5">
-                            <span>PROsTEINs</span>
+                            <span>PROTEINs</span>
                             <h1>PURE</h1>
                             <p>Super absorption & high protsein content. The gold league brands are here!</p>
                             <a href="/all-products" class="primary-btn">Shop Now</a>
@@ -116,9 +171,9 @@
                         <h2>Sale <span>40%</span></h2>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <div class="single-hero-items set-bg" data-setbg="/img/hero-2.jpg">
-                <div class="container">
+                <div style="visibility:hidden;" class="container">
                     <div class="row">
                         <div class="col-lg-5">
                             <span>NEW IN STORE</span>
@@ -143,7 +198,7 @@
                 <div class="col-6 col-md-3">
                     <div class="single-banner">
                         <img src="/img/banner-1.jpg" alt="">
-                        <div class="inner-text">
+                        <div style="visibility:hidden;" class="inner-text">
                             <h4>Men’s</h4>
                         </div>
                     </div>
@@ -151,7 +206,7 @@
                 <div class="col-6 col-md-3">
                     <div class="single-banner">
                         <img src="/img/banner-2.jpg" alt="">
-                        <div class="inner-text">
+                        <div style="visibility:hidden;" class="inner-text">
                             <h4>Women’s</h4>
                         </div>
                     </div>
@@ -159,7 +214,7 @@
                 <div class="col-6 col-md-3">
                     <div class="single-banner">
                         <img src="/img/banner-3.jpg" alt="">
-                        <div class="inner-text">
+                        <div style="visibility:hidden;" class="inner-text">
                             <h4>Kid’s</h4>
                         </div>
                     </div>
@@ -167,7 +222,7 @@
                 <div class="col-6 col-md-3">
                     <div class="single-banner">
                         <img src="/img/banner-3.jpg" alt="">
-                        <div class="inner-text">
+                        <div style="visibility:hidden;" class="inner-text">
                             <h4>Kid’s</h4>
                         </div>
                     </div>
@@ -181,6 +236,8 @@
     <% var products=JSON.parse(data).products;%>
 
     <!-- Women Banner Section Begin -->
+   
+
     <section class="women-banner spad" id="brandsection">
         <div class="container-fluid">
             <div class="row">
@@ -221,7 +278,8 @@
 
             					<div class="product-item col-md-3">
 		                            <div class="pi-pic">
-		                                <img class="img-fluid img-responsive " src="/uploads/<%=product.image_path%>" alt="">
+                                        <a href="/product/<%=product._id%>">
+		                                <img class="img-fluid img-responsive " src="/uploads/<%=product.image_path%>" alt=""></a>
 		                                <!-- sale should be kept optional & appear if only there's a discount as mentioned in the product-price below-->
 		                                <div class="sale">SALE</div>
 		                                <div class="icon">
@@ -230,9 +288,9 @@
 		                                </div>
 		                                <ul>
 		                                	<!--add to cart button-->
-		                                    <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
+		                                    <!-- <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li> -->
 		                                    <!--Takes user directly to checkout with this product in cart-->
-		                                    <li class="quick-view"><a href="#">+ Quick Buy</a></li>
+		                                    <li class="quick-view w-icon active"><a href="/add-to-cart/rqst-from-index-page/<%=product._id%>">Add To Cart</a></li>
 		                                </ul>
 		                            </div>
 		                            <div class="pi-text">
@@ -272,11 +330,11 @@
                                                  <i class="icon_heart_alt"></i>
                                              </div>
                                              <ul>
-                                                 <!--add to cart button-->
-                                                 <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                                                 <!--Takes user directly to checkout with this product in cart-->
-                                                 <li class="quick-view"><a href="#">+ Quick Buy</a></li>
-                                             </ul>
+                                                <!--add to cart button-->
+                                                <!-- <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li> -->
+                                                <!--Takes user directly to checkout with this product in cart-->
+                                                <li class="quick-view w-icon active"><a href="/add-to-cart/rqst-from-index-page/<%=product._id%>">Add To Cart</a></li>
+                                            </ul>
                                          </div>
                                          <div class="pi-text">
                                              <!--this is product category-->
@@ -319,11 +377,10 @@
             <div class="col-lg-6 text-center">
                 <div class="section-title">
                     <h2>Deal Of The Week</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed<br /> do ipsum dolor sit amet,
-                        consectetur adipisicing elit </p>
+                    <p >This bag is compact enough to take anywhere with you. It folds away into its little pouch so it won't take up too much space! </p>
                     <div class="product-price">
-                        35.00
-                        <span>/ HanBag</span>
+                        1500
+                        <span>/ Gym  Bag</span>
                     </div>
                 </div>
                 <a href="/all-products" class="primary-btn">Shop Now</a>
@@ -374,11 +431,11 @@
                                             <i class="icon_heart_alt"></i>
                                         </div>
                                         <ul>
-                                            <!--add to cart button-->
-                                            <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                                            <!--Takes user directly to checkout with this product in cart-->
-                                            <li class="quick-view"><a href="#">+ Quick Buy</a></li>
-                                        </ul>
+		                                	<!--add to cart button-->
+		                                    <!-- <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li> -->
+		                                    <!--Takes user directly to checkout with this product in cart-->
+		                                    <li class="quick-view w-icon active"><a href="/add-to-cart/rqst-from-index-page/<%=product._id%>">Add To Cart</a></li>
+		                                </ul>
                                     </div>
                                     <div class="pi-text">
                                         <!--this is product category-->
@@ -417,11 +474,11 @@
                                                  <i class="icon_heart_alt"></i>
                                              </div>
                                              <ul>
-                                                 <!--add to cart button-->
-                                                 <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                                                 <!--Takes user directly to checkout with this product in cart-->
-                                                 <li class="quick-view"><a href="#">+ Quick Buy</a></li>
-                                             </ul>
+                                                <!--add to cart button-->
+                                                <!-- <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li> -->
+                                                <!--Takes user directly to checkout with this product in cart-->
+                                                <li class="quick-view w-icon active"><a href="/add-to-cart/rqst-from-index-page/<%=product._id%>">Add To Cart</a></li>
+                                            </ul>
                                          </div>
                                          <div class="pi-text">
                                              <!--this is product category-->

@@ -3,11 +3,12 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="description" content="Most affordable health & fitness supplements">
-    <meta name="keywords" content="Protein, Pre workout, Mass gainer, supplements, delhi, noida, gurugram, gym">
+    <meta name="description" content="Fashi Template">
+    <meta name="keywords" content="Fashi, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Most Affordable Health Supplements</title>
+
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
@@ -153,200 +154,70 @@
     </header>
     <!-- Header End -->
 
-
     <!-- Breadcrumb Section Begin -->
     <div class="breacrumb-section">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="breadcrumb-text product-more">
+                    <div class="breadcrumb-text">
                         <a href="/"><i class="fa fa-home"></i> Home</a>
-                        <a href="/all-products">Shop</a>
-                        <span>Detail</span>
+                        <span>Login</span>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Breadcrumb Section Begin -->
+    <!-- Breadcrumb Form Section Begin -->
 
-    <!-- Product Shop Section Begin -->
-    <section class="product-shop spad page-details">
+    <!-- Register Section Begin -->
+    <div class="register-login-section spad">
         <div class="container">
             <div class="row">
-                <div class="">
-                    <div class="row">
-                        <div class="col-lg-4">
-                            <div class="product-pic-zoom">
-                                <img class="product-big-img" src="/uploads/<%=product.image_path%>" alt="">
-                                <div class="zoom-icon">
-                                    <i class="fa fa-search-plus"></i>
-                                </div>
-                            </div>
-                            <!--maybe used later
-                            <div class="product-thumbs">
-                                <div class="product-thumbs-track ps-slider owl-carousel">
-                                    <div class="pt active" data-imgbigurl="img/product-single/product-1.jpg"><img
-                                            src="/img/product-single/product-1.jpg" alt=""></div>
-                                    <div class="pt" data-imgbigurl="img/product-single/product-2.jpg"><img
-                                            src="/img/product-single/product-2.jpg" alt=""></div>
-                                    <div class="pt" data-imgbigurl="img/product-single/product-3.jpg"><img
-                                            src="/img/product-single/product-3.jpg" alt=""></div>
-                                    <div class="pt" data-imgbigurl="img/product-single/product-3.jpg"><img
-                                            src="/img/product-single/product-3.jpg" alt=""></div>
-                                </div>
-                            </div>
-                        -->
-                        </div>
-                        <div class="col-lg-8">
-                            <div class="product-details">
-                                <div class="pd-title">
-                                    <!--category name-->
-                                    <span><%=product.category%></span>
-                                    <h3><%=product.product_name%></h3>
-                                    <!-- <a href="#" class="heart-icon"><i class="icon_heart_alt"></i></a> -->
-                                </div>
-                                <!--maybe used later
-                                <div class="pd-rating">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star-o"></i>
-                                    <span>(5)</span>
-                                </div>
-                            -->
-                                <div class="pd-desc">
-                                    <p><%=product.short_description%></p>
-                                    <!--discounted & original prices-->
-                                    <h4>₹<%=product.discounted_price%> <span>₹<%=product.original_price%></span></h4>
-                                </div>
-                                <!--maybe used later
-                                <div class="pd-size-choose">
-                                    <div class="sc-item">
-                                        <input type="radio" id="sm-size">
-                                        <label for="sm-size">200gm</label>
-                                    </div>
-                                    <div class="sc-item">
-                                        <input type="radio" id="md-size">
-                                        <label for="md-size">500gm</label>
-                                    </div>
-                                    <div class="sc-item">
-                                        <input type="radio" id="lg-size">
-                                        <label for="lg-size">1 Kg</label>
-                                    </div>
-                                    <div class="sc-item">
-                                        <input type="radio" id="xl-size">
-                                        <label for="xl-size">5 Kg</label>
-                                    </div>
-                                </div>
-                                -->
-                                <div class="quantity">
-                                    <!-- <div class="pro-qty">
-                                        <input type="text" value="1">
-                                    </div> -->
-                                    <a href="/add-to-cart/<%=product._id%>" class="primary-btn pd-cart">Add To Cart</a>
-                                </div>
-                                <!--MAYBE USED LATER
-                                <ul class="pd-tags">
-                                    <li><span>TAGS</span>: PROTEIN, VEGETARIAN</li>
-                                </ul>
+                <div class="col-lg-6 offset-lg-3">
+                    <div class="login-form">
+                        <h2>Login</h2>
 
-                                <div class="pd-share">
-                                    <div class="pd-social">
-                                        <a href="#"><i class="ti-facebook"></i></a>
-                                        <a href="#"><i class="ti-twitter-alt"></i></a>
-                                        <a href="#"><i class="ti-linkedin"></i></a>
-                                    </div>
-                                </div>
-                            -->
+                        <% if(messages.length>0){  %>
+                            <div class="alert alert-danger">
+                              <%  messages.forEach(function(message){%>
+                                     <p><%=message%></p> 
+                                     <%  }); %>
+                                 </div> 
+                           <%  } %> 
+                         
+                        <form action="/user/signin" method="POST">
+                            <div class="group-input">
+                                <label for="username">Email address *</label>
+                                <input type="text" id="email"name="email" required> 
                             </div>
-                        </div>
-                    </div>
-                    <div class="product-tab">
-                        <div class="tab-item">
-                            <ul class="nav" role="tablist">
-                                <li>
-                                    <a class="active" data-toggle="tab" href="#tab-1" role="tab">DESCRIPTION</a>
-                                </li>
-                                <li>
-                                    <a data-toggle="tab" href="#tab-2" role="tab">SPECIFICATIONS</a>
-                                </li>
-                                <li>
-                                    <a data-toggle="tab" href="#tab-3" role="tab">USAGE</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="tab-item-content">
-                            <div class="tab-content">
-                                <div class="tab-pane fade-in active" id="tab-1" role="tabpanel">
-                                    <div class="product-content">
-                                        <div class="row">
-                                            <div class="col-lg-7">
-                                                <!--SHORT DESCRIPTION- as seen above-->
-                                                <h5>Introduction</h5>
-                                               <p><%=product.long_description%></p>
-                                            </div>
-                                            <!--maybe used later
-                                            <div class="col-lg-5">
-                                                <img src="/img/product-single/tab-desc.jpg" alt="">
-                                            </div>
-                                        -->
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="tab-pane fade" id="tab-2" role="tabpanel">
-                                    <div class="product-content">
-                                        <div class="row">
-                                            <div class="col-lg-7">
-                                                <!--ingredients-->
-                                                <h5>Ingrediants</h5>
-                                                <p><%=product.specifications%> </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="tab-pane fade" id="tab-3" role="tabpanel">
-                                    <div class="product-content">
-                                        <div class="row">
-                                            <div class="col-lg-7">
-                                                <!--ingredients-->
-                                                <h5>How to use</h5>
-                                                <p><%=product.usage%></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="group-input">
+                                <label for="pass">Password *</label>
+                                <input type="password" id="password" name="password">
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Product Shop Section End -->
+                            <div class="group-input gi-check" required>
+                                <!-- <div class="gi-more">
+                                    <label for="save-pass">
+                                        Save Password
+                                        <input type="checkbox" id="save-pass">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                    <a href="#" class="forget-pass">Forget your Password</a>
+                                </div> -->
+                            </div>
 
-    <!-- Related Products Section End -->
-    <!--maybe used later
-    <div class="related-products spad">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="section-title">
-                        <h2>Related Products</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-3 col-6">
-                    <div class="product-item">
+                            <!-- <input type="hidden" name="_csrf" value="<%#csrfToken%>"> -->
+
+                            <button type="submit" class="site-btn login-btn">Sign In</button>
+                        </form>
+                        <div class="switch-login">
+                            <a href="/user/signup" class="or-login">Or Create An Account</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
--->
-    <!-- Related Products Section End -->
+    <!-- Register Form Section End -->
 
     <!-- Partner Logo Section Begin -->
     <div class="partner-logo">
@@ -392,15 +263,15 @@
                             <a href="#"><img src="/img/footer-logo.png" alt=""></a>
                         </div>
                         <ul>
-                            <li>Address: 60-49 Road 11378 New York</li>
-                            <li>Phone: +65 11.188.888</li>
-                            <li>Email: hello.colorlib@gmail.com</li>
+                            <!-- <li>Address: 60-49 Road 11378 New York</li> -->
+                            <!-- <li>Phone: +65 11.188.888</li> -->
+                            <!-- <li>Email: hello.colorlib@gmail.com</li> -->
                         </ul>
                         <div class="footer-social">
                             <a href="#"><i class="fa fa-facebook"></i></a>
                             <a href="#"><i class="fa fa-instagram"></i></a>
                             <a href="#"><i class="fa fa-twitter"></i></a>
-                            <a href="#"><i class="fa fa-linkedin"></i></a>
+                            <a href="#"><i class="fa fa-pinterest"></i></a>
                         </div>
                     </div>
                 </div>
@@ -409,9 +280,9 @@
                         <h5>Information</h5>
                         <ul>
                             <li><a href="#">About Us</a></li>
-                            <li><a href="/all-products">All Products</a></li>
-                            <li><a href="/#brandsection">Brands</a></li>
-                            <li><a href="/#prodsection">Supplements</a></li>
+                            <li><a href="#">Checkout</a></li>
+                            <li><a href="#">Contact</a></li>
+                            <li><a href="#">Serivius</a></li>
                         </ul>
                     </div>
                 </div>
@@ -419,20 +290,35 @@
                     <div class="footer-widget">
                         <h5>My Account</h5>
                         <ul>
-                            <li><a href="#">Login/Logout</a></li>
-                            <li><a href="contact.html">Contact Us</a></li>
+                            <li><a href="#">My Account</a></li>
+                            <li><a href="#">Contact</a></li>
                             <li><a href="#">Shopping Cart</a></li>
+                            <li><a href="#">Shop</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-lg-4">
                     <div class="newslatter-item">
                         <h5>Join Our Newsletter Now</h5>
-                        <p>Get updates about our latest products and special offers.</p>
+                        <p>Get E-mail updates about our latest shop and special offers.</p>
                         <form action="#" class="subscribe-form">
                             <input type="text" placeholder="Enter Your Mail">
                             <button type="button">Subscribe</button>
                         </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="copyright-reserved">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="copyright-text">
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved 
+                        </div>
+                        <div class="payment-pic">
+                            <img src="/img/payment-method.png" alt="">
+                        </div>
                     </div>
                 </div>
             </div>

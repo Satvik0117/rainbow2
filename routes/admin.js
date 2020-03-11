@@ -3,8 +3,10 @@ var router=express.Router();
 var Brand=require('../models/brand.js');
 var Product=require('../models/products.js');
 var Category=require('../models/categories.js');
+var User=require('../models/user.js');
 
 const upload = require("../multer/storage.js");
+
 
 router.get("/brands",function(req,res){
 	Brand.find(function(err,brands){
