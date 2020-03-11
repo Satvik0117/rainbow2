@@ -124,14 +124,15 @@
                        <p><strong>Address:</strong> <%=user.address%> </p>
                         <p><strong>Email:</strong> <%=user.email%> </p>
                         <p><strong>Phone Number:</strong> <%=user.number%> </p>
-                        <div class="row">
-                        <i class="fa fa-3x fa-shopping-cart"></i>
-                        <h4>  Orders Placed</h4>
-                    </div>
+                       
                                 <!-- </a> -->
                                 <!-- <p> -->
                                     <div class="row">
                                      <%   if(orders){ %>
+                                        <div class="row">
+                                            <i class="fa fa-3x fa-shopping-cart"></i>
+                                            <h4>  Orders Placed</h4>
+                                        </div>
                                         <% var x=0;%>
                                         <%orders.forEach(function(order){ x++; %>
                                             <div style="margin-bottom:20px;" class="col-lg-6">
