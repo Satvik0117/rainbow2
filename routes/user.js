@@ -284,12 +284,12 @@ router.get("/product/:id",function(req,res){
             console.log(err);
         } else {
             // console.log(product);
-        var cart = new Cart(req.session.cart);
         if(!req.session.cart){
             return 	res.render('user/product',{
                 product:product,inCartProducts: null, totalPrice: null
             });
         }
+        var cart = new Cart(req.session.cart);
 
             // res.send(blog);
             res.render("user/product", {product: product,inCartProducts: cart.generateArray(), totalPrice: cart.totalPrice}); 
