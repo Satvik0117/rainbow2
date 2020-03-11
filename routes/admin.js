@@ -3,6 +3,8 @@ var router=express.Router();
 var Brand=require('../models/brand.js');
 var Product=require('../models/products.js');
 var Category=require('../models/categories.js');
+var Order=require('../models/order.js');
+var Cart=require('../models/cart.js');
 var User=require('../models/user.js');
 
 const upload = require("../multer/storage.js");
@@ -15,6 +17,29 @@ router.get("/brands",function(req,res){
 			brands:brands
 		});
 	});
+});
+
+
+router.get("/orders",function(req,res){
+	Order.find().populate("user").sort({'_id': -1}).exec(function(err, orders){
+        if(err){
+            return  res.send("Some error occured. Please try again.")
+        }
+        console.log(orders);
+        var cart;
+        orders.forEach(function(order){
+            cart = new Cart(order.cart);
+            order.items = cart.generateArray;
+        });
+
+        // console.log(orders[1].cart.items);
+        // var key = Object.keys(orders[1].cart.items);
+        // console.log(key[0]);
+        // console.log('sdf');
+        console.log(orders[1].cart.items);
+        // console.log( orders[1].cart.items[key[0]]);
+        res.render('admin/orders',{orders:orders});
+    });
 });
 
 router.get("/add-brand",function(req,res){

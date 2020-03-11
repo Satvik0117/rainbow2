@@ -18,7 +18,11 @@ router.use(express.static(__dirname + '/public'));
 
 router.get("/user/signup",function(req,res){
     var messages = req.flash('error');
-    var cart = new Cart(req.session.cart);
+
+    if(!req.session.cart){
+        return res.render('user/signup',{messages: messages, inCartProducts: null, totalPrice: null});
+     }
+     var cart = new Cart(req.session.cart);
     
     res.render("user/signup", {messages: messages,inCartProducts: cart.generateArray(), totalPrice: cart.totalPrice});
 })
@@ -31,7 +35,12 @@ router.post("/user/signup",passport.authenticate('local.signup',{
     // console.log(req.body.username);
 router.get("/user/signin",function(req,res,next){
     var messages = req.flash('error');
-    var cart = new Cart(req.session.cart);
+    // var cart = new Cart(req.session.cart);
+    if(!req.session.cart){
+        return res.render('user/signin',{messages: messages, inCartProducts: null, totalPrice: null});
+     }
+     var cart = new Cart(req.session.cart);
+
 
     res.render("user/signin", { messages: messages,inCartProducts: cart.generateArray(), totalPrice: cart.totalPrice});
     // res.render("user/signin", {csrfToken: req.csrfToken(), messages: messages});
@@ -195,15 +204,16 @@ router.get('/add-to-cart/rqst-from-cart-page/:id/', function(req, res, next){
 
 router.get('/shopping-cart', function(req,res){
     if(!req.session.cart){
-       return res.render('user/shopping-cart',{products:null, totalPrice : null});
+       return res.render('user/shopping-cart',{products:null, user:null,totalPrice : null});
     }
     var cart = new Cart(req.session.cart);
+    console.log(req.user);
     res.render('user/shopping-cart',{products: cart.generateArray(),user:req.user ,totalPrice: cart.totalPrice});
 });
 
 router.get('/checkout',isLoggedIn,function(req,res){
     if(!req.session.cart){
-        return res.redirect('/shopping-cart')
+        return res.redirect('/shopping-cart');
     }
     user = req.user;
     var cart = new Cart(req.session.cart);
@@ -228,7 +238,7 @@ router.post('/payment/success',isLoggedIn,function(req,res){
 });
 
 router.get("/",function(req,res){
-	Category.find().populate("products").exec(function(err, categories){
+	Category.find().populate("products").sort({'_id': 1}).exec(function(err, categories){
 		if(err) return console.log(err);
 		Brand.find().populate("products").exec(function(err,brands){
             Product.find(function(err,products){

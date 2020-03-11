@@ -1,0 +1,51 @@
+<%- include('partials/header'); -%>
+
+<div class="container">
+    
+    
+    
+    
+    
+
+        
+    <h4>  Orders Placed</h4>
+  </div>
+              <!-- </a> -->
+              <!-- <p> -->
+                  <div class="row">
+                      <% var x=0;%>
+                      <%orders.forEach(function(order){ x++; %>
+                          <div style="margin-bottom:20px;" class="col-lg-6">
+                          <div class="panel panel-default">
+                              <div class="panel-body">
+<ul>
+  <li><%=order.user.name%></li>
+  <li><%=order.user.number%></li>
+  <li><%=order.user.address%></li>
+</ul>
+                                  <ul class="list-group">
+                              <% var key = Object.keys(order.cart.items);  %>
+                               <% for(var i = 0; i<= key.length-1 ; i++){ %>
+                  
+                  
+                                      <li class="list-group-item d-flex justify-content-between align-items-center">
+                                          <%= order.cart.items[key[i]].item.product_name %>  | <%= order.cart.items[key[i]].qty %>
+                                        <span class="badge badge-primary badge-pill"><%=order.cart.items[key[i]].item.discounted_price%> </span>
+                                      </li>    
+
+                                      <%   } %>
+                                      <div class="panel-footer">
+                                  <li class="list-group-item "><strong>Total: <%=order.cart.totalPrice%></strong></li>
+                              </div>
+                              </ul>
+                              </div>
+                          </div>
+                      </div>
+                  <%   }); %>
+
+                  </div>        
+    
+    </div>
+
+
+<%- include('partials/footer'); -%>
