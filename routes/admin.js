@@ -32,12 +32,6 @@ router.get("/orders",function(req,res){
             order.items = cart.generateArray;
         });
 
-        // console.log(orders[1].cart.items);
-        // var key = Object.keys(orders[1].cart.items);
-        // console.log(key[0]);
-        // console.log('sdf');
-        console.log(orders[1].cart.items);
-        // console.log( orders[1].cart.items[key[0]]);
         res.render('admin/orders',{orders:orders});
     });
 });
