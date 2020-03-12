@@ -3,8 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="description" content="Fashi Template">
-    <meta name="keywords" content="Fashi, unica, creative, html">
+    <meta name="description" content="Most affordable health & fitness supplements">
+    <meta name="keywords" content="Protein, Pre workout, Mass gainer, supplements, delhi, noida, gurugram, gym">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Most Affordable Health Supplements</title>
@@ -22,18 +22,11 @@
     <link rel="stylesheet" href="/css/jquery-ui.min.css" type="text/css">
     <link rel="stylesheet" href="/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="/css/style.css" type="text/css">
-    <script src="/js/jquery-3.3.1.min.js"></script>
     <style>
         .fixed-top{
             background-color: white;
         }
     </style>
-    <script>
-        $(document).ready(function() {
-  $("#hero-banner").css("margin-top", $("header").height());
-});
-    </script>
-
 </head>
 
 <body>
@@ -43,7 +36,7 @@
     </div>
 
     <!-- Header Section Begin -->
-    <header class="fixed-top header-section">
+    <header class="fixed-top header-section ">
         <div class="container">
             <div class="inner-header">
                 <div class="row">
@@ -69,9 +62,60 @@
                         </form>
                     </div>
 
-             
+                    
+                <%    if(inCartProducts){ %>
 
-                    <div class="col-lg-5 text-right col-md-5">
+                    <div class="col-lg-2 text-right col-md-2">
+                        <ul class="nav-right">
+                            <!-- <li class="heart-icon"><a href="#">
+                                    <i class="icon_heart_alt"></i>
+                                    <span>1</span>
+                                </a>
+                            </li> -->
+                            <li class="cart-icon"><a href="#">View Card
+                                    <i class="icon_bag_alt"></i>
+                                    <!-- <span>3</span> -->
+                                </a>
+                                <div class="cart-hover">
+                                    <div class="select-items">
+                                        <table>
+                                            <tbody>
+                                <%inCartProducts.forEach(function(product){ %>
+
+                                                <tr>
+                                                    <td class="si-pic"><img src="/uploads/<%=product.item.image_path%>" alt=""></td>
+                                                    <td class="si-text">
+                                                        <div class="product-selected">
+                                                            <p><%=product.item.discounted_price%> x <%=product.qty%></p>
+                                                            <h6><%=product.item.product_name%></h6>
+                                                        </div>
+                                                    </td>
+                                                    <!-- <td class="si-close">
+                                                        <i class="ti-close"></i>
+                                                    </td> -->
+                                                </tr>
+
+                                <%   }); %>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="select-total">
+                                        <span>total:</span>
+                                        <h5><%=totalPrice%></h5>
+                                    </div>
+                                    <div class="select-button">
+                                        <a href="/shopping-cart" class="primary-btn view-card">VIEW CART</a>
+                                        <a href="/checkout" class="primary-btn checkout-btn">CHECK OUT</a>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <% } %>
+
+                    <div class="col-lg-3 text-right col-md-3">
                         <ul class="nav-right">
                             
                             <li class="cart-icon">
@@ -85,12 +129,11 @@
                                 -->
                                 </a>
                             </li>
-                          <%  if(user){%>
-                                <li><a href="/user/logout" class="login-panel"><i class="fa fa-user mr-1"></i>Logout</a></li>
-                                <li><%=user.name%></li>
-                                <%}else{%>
-                                <li><a href="/user/signin" class="login-panel"><i class="fa fa-user mr-1"></i>Login</a></li>
-                                <%} %>
+                      <%      if(user){ %>
+                                <li><a href="/user/logout" class="login-panel">Logout</a></li>
+                        <%    }else{    %>
+                            <li><a href="/user/signin" class="login-panel"><i class="fa fa-user mr-1"></i>Login</a></li>
+                          <%  } %>
                         </ul>
                     </div>
                 </div>
@@ -119,15 +162,15 @@
     </header>
     <!-- Header End -->
 
+
     <!-- Breadcrumb Section Begin -->
-    <div  id="hero-banner" class="breacrumb-section">
+    <div id="hero-banner" class="breacrumb-section">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="breadcrumb-text product-more">
-                        <a href="/"><i class="fa fa-home"></i> Home</a>
-                        <a href="/all-products">Shop</a>
-                        <span>Shopping Cart</span>
+                    <div class="breadcrumb-text">
+                        <a href="#"><i class="fa fa-home"></i> Home</a>
+                        <span>Contact</span>
                     </div>
                 </div>
             </div>
@@ -135,108 +178,93 @@
     </div>
     <!-- Breadcrumb Section Begin -->
 
-    <!-- Shopping Cart Section Begin -->
-    <section class="shopping-cart spad">
+    <!-- Map Section Begin -->
+    <!--
+    <div class="map spad">
+        <div class="container">
+            <div class="map-inner">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d48158.305462977965!2d-74.13283844036356!3d41.02757295168286!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c2e440473470d7%3A0xcaf503ca2ee57958!2sSaddle%20River%2C%20NJ%2007458%2C%20USA!5e0!3m2!1sen!2sbd!4v1575917275626!5m2!1sen!2sbd"
+                    height="610" style="border:0" allowfullscreen="">
+                </iframe>
+                <div class="icon">
+                    <i class="fa fa-map-marker"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+-->
+    <!-- Map Section Begin -->
+
+    <!-- Contact Section Begin -->
+    <section class="contact-section spad">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12">
-                    <% if(products==null){ %>
-                        <h2 class="text-center"> Cart Is Empty </h2>
-                        <% }else{ %>
-                    <div class="cart-table">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Image</th>
-                                    <th class="p-name">Product Name</th>
-                                    <th>Price</th>
-                                    <th>Quantity</th>
-                                    <th>Total</th>
-                                    <th><i class="ti-close"></i></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <%products.forEach(function(product){ %>
-                                    
-                            
-                                <tr>
-                                    <td class="cart-pic  first-row"><img class="" src="/uploads/<%=product.item.image_path%>" alt=""></td>
-                                    <td class="cart-title first-row">
-                                        <h5><%=product.item.product_name%></h5>
-                                    </td>
-                                    <td class="p-price first-row"><%=product.item.discounted_price%></td>
-                                    <td class="p-price first-row">
-                                        <!-- <div class="quantity"> -->
-                                            <!-- <div class="pro-qty"> -->
-                                            <!-- </div> -->
-                                        <!-- </div> -->
-                                        <a href="/reduce/<%=product.item._id%>"> <i class="fa fa-minus"></i> </a>
-                                        <%=product.qty%>
-                                     
-                                        <a href="/add-to-cart/rqst-from-cart-page/<%=product.item._id%>/"> <i class="fa fa-plus"></i> </a>
-
-                                    </td>
-                                    
-                                    <td class="total-price first-row"><%=product.price%></td>
-                                    
-                                    <td class="close-td first-row">
-                                        <a href="/remove/<%=product.item._id%>/"> 
-                                    
-                                        <i class="ti-close"></i>
-                                    </a>
-                                    </td>
-                                </tr>
-                              
-                                <%   }); %>
-
-                            </tbody>
-                        </table>
+                <div class="col-lg-5">
+                    <div class="contact-title">
+                        <h4>Contacts Us</h4>
+                        <p>We're here for all your doubts & queries regarding health & fitness supplements.</p>
                     </div>
-
-
-             <%   } %>
-                    <div class="row">
-                        <div class="col-lg-4">
-                            <div class="cart-buttons">
-                                <a href="/all-products" class="primary-btn continue-shop">Continue shopping</a>
-                    <% if(!(products==null)){ %>
-
-                                <!-- <a href="#" class="primary-btn up-cart">Update cart</a> -->
-             <%   } %>
-
+                    <div class="contact-widget">
+                        <div class="cw-item">
+                            <div class="ci-icon">
+                                <i class="ti-location-pin"></i>
                             </div>
-                    <% if(!(products==null)){ %>
-
-                            <!-- <div class="discount-coupon">
-                                <h6>Discount Codes</h6>
-                                <form action="#" class="coupon-form">
-                                    <input type="text" placeholder="Enter your codes">
-                                    <button type="submit" class="site-btn coupon-btn">Apply</button>
-                                </form>
-                            </div> -->
-             <%   } %>
-
-                        </div>
-                    <% if(!(products==null)){ %>
-                        
-                        <div class="col-lg-4 offset-lg-4">
-                            <div class="proceed-checkout">
-                                <ul>
-                                    <li class="subtotal">Subtotal <span><%= totalPrice %></span></li>
-                                    <li class="cart-total">Total <span id="total-price" ><%= totalPrice %></span></li>
-                                </ul>
-                                <a href="/checkout" class="proceed-btn">PROCEED TO CHECK OUT</a>
+                            <div class="ci-text">
+                                <span>Address:</span>
+                                <p>Balaji Plaza, Gujranwala Town Part 1, Delhi 110052</p>
                             </div>
                         </div>
-             <%   } %>
-             
+                        <div class="cw-item">
+                            <div class="ci-icon">
+                                <i class="ti-mobile"></i>
+                            </div>
+                            <div class="ci-text">
+                                <span>Phone:</span>
+                                <p>+91 98111 49277</p>
+                            </div>
+                        </div>
+                        <div class="cw-item">
+                            <div class="ci-icon">
+                                <i class="ti-email"></i>
+                            </div>
+                            <div class="ci-text">
+                                <span>Email:</span>
+                                <p>rainbowcolorshealth@gmail.com</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 offset-lg-1">
+                    <div class="contact-form">
+                        <div class="leave-comment">
+                            <h4>Write to us</h4>
+                            <p>Our staff will get back to you as soon as possible.</p>
+                            <form action="/contact" method="POST" class="comment-form">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <input type="text" name="name" placeholder="Your name">
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <input type="email" name="email" placeholder="Your email">
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <input type="text" name="number" placeholder="Your contact number">
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <input name="message" placeholder="Your message"></input>
+                                        <button type="submit" class="site-btn">Send message</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <!-- Shopping Cart Section End -->
-   
+    <!-- Contact Section End -->
+
     <!-- Partner Logo Section Begin -->
     <div class="partner-logo">
         <div class="container">
@@ -330,6 +358,12 @@
     <!-- Footer Section End -->
 
     <!-- Js Plugins -->
+    <script src="/js/jquery-3.3.1.min.js"></script>
+    <script>
+        $(document).ready(function() {
+  $("#hero-banner").css("margin-top", $("header").height());
+});
+    </script>
     <script src="/js/bootstrap.min.js"></script>
     <script src="/js/jquery-ui.min.js"></script>
     <script src="/js/jquery.countdown.min.js"></script>

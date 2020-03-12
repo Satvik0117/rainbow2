@@ -22,6 +22,16 @@
     <link rel="stylesheet" href="/css/jquery-ui.min.css" type="text/css">
     <link rel="stylesheet" href="/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="/css/style.css" type="text/css">
+    <style>
+        .fixed-top{
+            background-color: white;
+        }
+    </style>
+    <script>
+        $(document).ready(function() {
+  $("#hero-banner").css("margin-top", $("header").height());
+});
+    </script>
 </head>
 
 <body>
@@ -31,7 +41,7 @@
     </div>
 
     <!-- Header Section Begin -->
-    <header class="header-section">
+    <header class="fixed-top header-section">
         <div class="container">
             <div class="inner-header">
                 <div class="row">
@@ -124,7 +134,11 @@
                                 -->
                                 </a>
                             </li>
+                      <%      if(user){ %>
+                                <li><a href="/user/logout" class="login-panel">Logout</a></li>
+                        <%    }else{    %>
                             <li><a href="/user/signin" class="login-panel"><i class="fa fa-user mr-1"></i>Login</a></li>
+                          <%  } %>
                         </ul>
                     </div>
                 </div>
@@ -155,7 +169,7 @@
 
 
     <!-- Breadcrumb Section Begin -->
-    <div class="breacrumb-section">
+    <div  id="hero-banner" class="breacrumb-section">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -336,7 +350,7 @@
     <!-- Partner Logo Section End -->
 
      <!-- Footer Section Begin -->
-    <footer class="footer-section">
+     <footer class="footer-section">
         <div class="container">
             <div class="row">
                 <div class="col-lg-3">
@@ -345,14 +359,14 @@
                             <a href="#"><img src="/img/footer-logo.png" alt=""></a>
                         </div>
                         <ul>
-                            <li>Address: 60-49 Road 11378 New York</li>
-                            <li>Phone: +65 11.188.888</li>
-                            <li>Email: hello.colorlib@gmail.com</li>
+                            <li>Address: Balaji Plaza, Gujranwala Town Part 1, Delhi 110052</li>
+                            <li>Phone: +91 98111 49277</li>
+                            <li>Email: rainbowcolorshealth@gmail.com</li>
                         </ul>
                         <div class="footer-social">
                             <a href="#"><i class="fa fa-facebook"></i></a>
                             <a href="#"><i class="fa fa-instagram"></i></a>
-                            <a href="/"><i class="fa fa-twitter"></i></a>
+                            <a href="#"><i class="fa fa-twitter"></i></a>
                             <a href="#"><i class="fa fa-linkedin"></i></a>
                         </div>
                     </div>
@@ -362,9 +376,9 @@
                         <h5>Information</h5>
                         <ul>
                             <li><a href="#">About Us</a></li>
-                            <li><a href="shop.html">All Products</a></li>
-                            <li><a href="/#brandsection">Brands</a></li>
-                            <li><a href="/#prodsection">Supplements</a></li>
+                            <li><a href="/all-products">All Products</a></li>
+                            <li><a href="#brandsection">Brands</a></li>
+                            <li><a href="#prodsection">Supplements</a></li>
                         </ul>
                     </div>
                 </div>
@@ -372,13 +386,13 @@
                     <div class="footer-widget">
                         <h5>My Account</h5>
                         <ul>
-                            <li><a href="#">Login/Logout</a></li>
-                            <li><a href="contact.html">Contact Us</a></li>
-                            <li><a href="#">Shopping Cart</a></li>
+                            <li><a href="/user/profile">Profile</a></li>
+                            <li><a href="/contact">Contact Us</a></li>
+                            <li><a href="/shopping-cart">Shopping Cart</a></li>
                         </ul>
                     </div>
                 </div>
-                <div class="col-lg-4">
+                <!-- <div class="col-lg-4">
                     <div class="newslatter-item">
                         <h5>Join Our Newsletter Now</h5>
                         <p>Get updates about our latest products and special offers.</p>
@@ -387,7 +401,7 @@
                             <button type="button">Subscribe</button>
                         </form>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </footer>

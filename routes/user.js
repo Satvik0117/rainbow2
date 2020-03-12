@@ -13,6 +13,7 @@ var Product=require('../models/products.js');
 var Order=require('../models/order.js');
 var Category=require('../models/categories.js');
 var User=require('../models/user.js');
+var Contact_user=require('../models/contactus-user-submission.js');
 router.use('/uploads', express.static('uploads'));
 router.use(express.static(__dirname + '/public'));
 
@@ -244,13 +245,14 @@ router.get("/",function(req,res){
             Product.find(function(err,products){
                 var data= JSON.stringify({categories:categories, brands: brands,products : products});
                 if(!req.session.cart){
-                    return res.render('user/index',{data:data, inCartProducts: null, totalPrice: null});
+                    // console.log(req.user);3
+                    return res.render('user/index',{data:data, inCartProducts: null, totalPrice: null,user:req.user});
                  }
                 
                 var cart = new Cart(req.session.cart);
                 // console.log(JSON.parse(data).categories);
                 res.render('user/index.ejs',{
-                    data:data,inCartProducts: cart.generateArray(), totalPrice: cart.totalPrice
+                    data:data,inCartProducts: cart.generateArray(), totalPrice: cart.totalPrice, user:req.user
                 });
 
             })
@@ -335,6 +337,32 @@ router.get('/search',function(req,res){
 
 
 
+});
+
+router.get('/contact',function(req,res){
+    if(!req.session.cart){
+        return 	res.render('user/contact',{
+            inCartProducts: null, totalPrice: null,user:req.user
+        });
+    }
+    var cart = new Cart(req.session.cart);
+        console.log(cart);
+		res.render('user/contact',{
+			inCartProducts: cart.generateArray(), totalPrice: cart.totalPrice, user:req.user
+		});
+});
+
+router.post('/contact',function(req,res){
+    var contact_user = new Contact_user;
+
+    contact_user.name = req.body.name;
+    contact_user.email = req.body.email;
+    contact_user.number = req.body.number;
+    contact_user.message = req.body.message;
+    contact_user.save(function(err){
+        if(!err)
+        return res.redirect('/');
+    })
 });
 
 

@@ -1,0 +1,31 @@
+<%- include('partials/header'); -%>
+
+<div class="container">
+
+    <table class="table">
+        <thead class="thead-light">
+            <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Number</th>
+            <th>Message</th>
+        </tr>
+        </thead>
+    <%entries.forEach(function(entry){%>
+
+        <tr>
+            <td><%=entry.name%></td>
+            <td><%=entry.email%></td>
+            <td><%=entry.number%></td>
+            <td><%=entry.message%></td>
+           
+        </tr>
+  <%  }); %>
+
+    </table>
+
+</div>
+
+
+
+<%- include('partials/footer'); -%>

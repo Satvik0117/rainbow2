@@ -6,6 +6,8 @@ var Category=require('../models/categories.js');
 var Order=require('../models/order.js');
 var Cart=require('../models/cart.js');
 var User=require('../models/user.js');
+var Contact_user=require('../models/contactus-user-submission.js');
+
 
 const upload = require("../multer/storage.js");
 
@@ -34,6 +36,13 @@ router.get("/orders",function(req,res){
 
         res.render('admin/orders',{orders:orders});
     });
+});
+
+router.get('/contact-response',function(req,res){
+	Contact_user.find({},function(err,entries){
+		if(!err)
+		res.render('admin/contact-responses',{entries,entries});
+	})
 });
 
 router.get("/add-brand",function(req,res){
