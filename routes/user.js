@@ -324,14 +324,14 @@ router.get('/search',function(req,res){
         if(err) return console.log(err);
         if(!req.session.cart){
             return 	res.render('user/shop',{
-                products:result,inCartProducts: null, totalPrice: null
+                products:result,inCartProducts: null, totalPrice: null,user:req.user
             });
         }
 
     var cart = new Cart(req.session.cart);
         console.log(cart);
 		res.render('user/shop',{
-			products:result,inCartProducts: cart.generateArray(), totalPrice: cart.totalPrice
+			products:result,inCartProducts: cart.generateArray(), totalPrice: cart.totalPrice,user:req.user
 		});
     });
 
