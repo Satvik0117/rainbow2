@@ -266,7 +266,7 @@ router.get("/all-products/",function(req,res){
         if(err) return console.log(err);
         if(!req.session.cart){
             return 	res.render('user/shop',{
-                products:products,inCartProducts: null, totalPrice: null
+                products:products,inCartProducts: null, totalPrice: null,user:req.user
             });
         }
 
@@ -274,7 +274,7 @@ router.get("/all-products/",function(req,res){
     var cart = new Cart(req.session.cart);
         console.log(cart);
 		res.render('user/shop',{
-			products:products,inCartProducts: cart.generateArray(), totalPrice: cart.totalPrice
+			products:products,inCartProducts: cart.generateArray(), totalPrice: cart.totalPrice,user:req.user
 		});
     });
 });
