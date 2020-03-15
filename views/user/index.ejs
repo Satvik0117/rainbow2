@@ -145,9 +145,11 @@
                 <nav class="nav-menu mobile-menu">
                     <ul>
                         <li class="active"><a href="/">Home</a></li>
-                        <li  ><a href="/all-products">All Products</a></li>
-                        <li><a href="/#brandsection">Brands</a></li>
-                        <li><a href="/#prodsection">Supplements</a></li>
+                        <li><a href="/all-products">All Products</a></li>
+                        <li class="d-none d-md-inline-block"><a href="/#brandsection_big">Brands</a></li>
+                        <li class="d-lg-none"><a href="/#brandsection_small">Brands</a></li>
+                        <li class="d-none d-md-inline-block"><a href="/#prodsection_big">Supplements</a></li>
+                        <li  class="d-lg-none"><a href="/#prodsection_small">Supplements</a></li>
                         <li><a href="/contact">Contact Us</a>
                             <!--
                             <ul class="dropdown">
@@ -166,7 +168,7 @@
 
     <!-- Hero Section Begin -->
     <section id="hero-banner" class="hero-section">
-        <div class="hero-items owl-carousel">
+        <div class="d-none d-md-block hero-items owl-carousel">
             <div class="single-hero-items set-bg" data-setbg="/img/hero-1.jpg">
                 <div style="visibility:hidden;"  class="container">
                     <div class="row">
@@ -199,10 +201,22 @@
             </div>
         </div>
     </section>
+
+
+    <section class="hero-section d-sm-block d-md-none">
+        <div class="hero-items owl-carousel">
+            <div>
+            	<img src="img/hero-1.jpg">
+            </div>
+            <div>
+            	<img src="img/hero-2.jpg">
+            </div>
+        </div>
+    </section>
     <!-- Hero Section End -->
 
     <!-- Banner Section Begin -->
-    <div class="banner-section spad">
+    <div class=" d-none d-md-block banner-section spad">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-6 col-md-3">
@@ -258,7 +272,7 @@
     <!-- Women Banner Section Begin -->
    
 
-    <section class="women-banner spad" id="brandsection">
+    <section class=" d-none d-md-block women-banner spad" id="brandsection_big">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-3">
@@ -389,15 +403,139 @@
             </div>
         </div>
     </section>
+
+    <section class="women-banner spad d-sm-block d-md-none" id="brandsection_small">                
+        <div class="filter-control">
+            <ul class="nav nav-tabs flex-row flex-nowrap overflow-auto" id="myTab" role="tablist"><% var i=0;%>
+                <%brands.forEach(function(brand){ %>
+                <%    if(i==0){ %>
+                    <li><a class="nav-link active" id="home-tab<%=brand.name.replace(/ /g,'').replace(/[^A-Z0-9]/ig, '_')%>small" data-toggle="tab" href="#<%=brand.name.replace(/ /g,'').replace(/[^A-Z0-9]/ig, '_')%>small"><%=brand.name%></a></li>
+                   
+               <% }else{ %>
+                    <li><a class="nav-link" id="home-tab<%=brand.name.replace(/ /g,'').replace(/[^A-Z0-9]/ig, '_')%>small" data-toggle="tab" href="#<%=brand.name.replace(/ /g,'').replace(/[^A-Z0-9]/ig, '_')%>small"><%=brand.name%></a></li>
+
+                <%    }     %>
+
+                    <%  i++; }); %>
+
+            </ul>
+        </div>
+		<div class="tab-content" id="myTabContent">
+
+
+
+		   <% var i=0;%>
+                     <%   for(var j=0;j<brands.length;j++){%>
+                        <%    if(i==0){ %>
+
+					  <div class="tab-pane fade show active" id="<%=brands[j].name.replace(/ /g,'').replace(/[^A-Z0-9]/ig, '_')%>small" role="tabpanel" aria-labelledby="home-tab<%=brands[j].name%>">
+                       <div class="container">
+            				<div class="row">
+                                <!--Product starts here-->
+                                
+                                <%brands[j].products.forEach(function(product){ %>
+
+            					<div class="product-item col-6 col-md-3">
+		                            <div class="pi-pic">
+                                        <a href="/product/<%=product._id%>">
+		                                <img class="img-fluid img-responsive " src="/uploads/<%=product.image_path%>" alt=""></a>
+		                                <!-- sale should be kept optional & appear if only there's a discount as mentioned in the product-price below-->
+		                                <div class="sale">SALE</div>
+		                                <div class="icon">
+		                                	<!--puts the product in user's liked list-->
+		                                    <i class="icon_heart_alt"></i>
+		                                </div>
+		                                <ul>
+		                                	<!--add to cart button-->
+		                                    <!-- <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li> -->
+		                                    <!--Takes user directly to checkout with this product in cart-->
+		                                    <li class="quick-view w-icon active"><a href="/add-to-cart/rqst-from-index-page/<%=product._id%>">Add To Cart</a></li>
+		                                </ul>
+		                            </div>
+		                            <div class="pi-text">
+		                            	<!--this is product category-->
+		                                <div class="catagory-name"><%=product.category%></div>
+		                                <!--enter link to individual product page, check product.html-->
+		                                <a href="/product/<%=product._id%>">
+		                                    <h5><%=product.product_name%>12</h5>
+		                                </a>
+		                                <!--this is product-price, the first price is the discounted one and the second one, that's inside <span>, is displayed with a slash on page-->
+		                                <div class="product-price">
+		                                    ₹<%=product.discounted_price%>
+		                                    <span>₹<%=product.original_price%></span>
+		                                </div>
+		                            </div>
+                                </div>
+                                <!-- Product end -->
+                                <%   }); %>
+            				</div>
+            			</div>
+                      </div>
+                      <% i++;}else{ %>
+                        <div class="tab-pane fade " id="<%=brands[j].name.replace(/ /g,'').replace(/[^A-Z0-9]/ig, '_')%>small" role="tabpanel" aria-labelledby="home-tab<%=brands[j].name%>">
+                            <div class="container">
+                                 <div class="row">
+                                     <!--Product starts here-->
+                                     
+                                     <%brands[j].products.forEach(function(product){ %>
+     
+                                     <div class="product-item col-6 col-md-3">
+                                         <div class="pi-pic">
+                                             <img src="/uploads/<%=product.image_path%>" alt="">
+                                             <!-- sale should be kept optional & appear if only there's a discount as mentioned in the product-price below-->
+                                             <div class="sale">SALE</div>
+                                             <div class="icon">
+                                                 <!--puts the product in user's liked list-->
+                                                 <i class="icon_heart_alt"></i>
+                                             </div>
+                                             <ul>
+                                                <!--add to cart button-->
+                                                <!-- <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li> -->
+                                                <!--Takes user directly to checkout with this product in cart-->
+                                                <li class="quick-view w-icon active"><a href="/add-to-cart/rqst-from-index-page/<%=product._id%>">Add To Cart</a></li>
+                                            </ul>
+                                         </div>
+                                         <div class="pi-text">
+                                             <!--this is product category-->
+                                             <div class="catagory-name"><%=product.category%></div>
+                                             <!--enter link to individual product page, check product.html-->
+                                             <a href="/product/<%=product._id%>">
+                                                 <h5><%=product.product_name%></h5>
+                                             </a>
+                                             <!--this is product-price, the first price is the discounted one and the second one, that's inside <span>, is displayed with a slash on page-->
+                                             <div class="product-price">
+                                                 ₹<%=product.discounted_price%>
+                                                 <span>₹<%=product.original_price%></span>
+                                             </div>
+                                         </div>
+                                     </div>
+                                     <!-- Product end -->
+                                     <%   }); %>
+                                 </div>
+                             </div>
+                           </div>
+                           <%    }     %>
+
+                      <% } %>
+
+
+				</div>
+			</div>
+		  </div>
+		 
+	
+		  
+		</div>
+    </section>
     <!-- Women Banner Section End -->
 
     <!-- Deal Of The Week Section Begin-->
-    <section class="deal-of-week set-bg spad" data-setbg="img/time-bg.jpg">
+    <section class="d-none d-md-block deal-of-week set-bg spad" data-setbg="img/time-bg.jpg">
         <div class="container">
             <div class="col-lg-6 text-center">
                 <div class="section-title">
                     <h2>Deal Of The Week</h2>
-                    <p >This bag is compact enough to take anywhere with you. It folds away into its little pouch so it won't take up too much space! </p>
+                <p>Leather bag that fits all your needs. Enough space<br/> to fit your shoes, gloves, tovel, shaker and much more...</p>
                     <div class="product-price">
                         1500
                         <span>/ Gym  Bag</span>
@@ -408,9 +546,26 @@
         </div>
     </section>
     <!-- Deal Of The Week Section End -->
-
+<!-- Phone Deal Of The Week Section Begin-->
+<section class=" deal-of-week set-bg spad d-sm-block d-md-none">
+    <div class="container">
+        <div class="col-lg-6 text-center">
+            <div class="section-title">
+                <img src="img/time-bg.jpg">
+                <h2>Deal Of The Week</h2>
+                <p>Leather bag that fits all your needs. Enough space<br/> to fit your shoes, gloves, tovel, shaker and much more...</p>
+                <div class="product-price">
+                    ₹1500
+                    <span>/ GymBag</span>
+                </div>
+            </div>
+            <!-- <a href="shop.html" class="primary-btn">Shop Now</a> -->
+        </div>
+    </div>
+</section>
+<!-- Phone Deal Of The Week Section End -->
     <!-- Man Banner Section Begin -->
-    <section class="man-banner spad" id="prodsection">
+    <section class="d-none d-md-block man-banner spad" id="prodsection_big">
         <div class="container-fluid">
             <div class="row">
                <div class="col-lg-9">
@@ -540,6 +695,134 @@
     </section>
     <!-- Man Banner Section End -->
 
+    <section class="man-banner spad" id="prodsection_small">
+        <div class="container-fluid">
+            <div class="row">
+               <div class="col-lg-9">
+                    <div class="filter-control">
+                        <ul class="nav nav-tabs flex-row flex-nowrap overflow-auto" id="myTab" role="tablist">
+                            <% var i=0;%>
+                            <%categories.forEach(function(category){ %>
+                            <%    if(i==0){ %>
+                                <li><a class="nav-link active" id="home-tab<%=category.name.replace(/ /g,'').replace(/[^A-Z0-9]/ig, '_')%>small" data-toggle="tab" href="#<%=category.name.replace(/ /g,'').replace(/[^A-Z0-9]/ig, '_')%>small"><%=category.name%></a></li>
+                               
+                           <% }else{ %>
+                                <li><a class="nav-link" id="home-tab<%=category.name.replace(/ /g,'').replace(/[^A-Z0-9]/ig, '_')%>small" data-toggle="tab" href="#<%=category.name.replace(/ /g,'').replace(/[^A-Z0-9]/ig, '_')%>small"><%=category.name%></a></li>
+
+                            <%    }     %>
+
+                                <%  i++; }); %>
+                        </ul>
+                    </div>
+            		<div class="tab-content" id="myTabContent">
+                        <% var i=0;%>
+                     <%   for(var j=0;j<categories.length;j++){%>
+                        <%    if(i==0){ %>
+                    
+                      <div class="tab-pane fade show active" id="<%=categories[j].name.replace(/ /g,'').replace(/[^A-Z0-9]/ig, '_')%>small" role="tabpanel" aria-labelledby="home-tab<%=categories[j].name%>">
+                       <div class="container">
+                            <div class="row">
+                                <!--Product starts here-->
+                                
+                                <%categories[j].products.forEach(function(product){ %>
+                    
+                                <div class="product-item col-6 col-md-3">
+                                    <div class="pi-pic">
+                                        <img src="/uploads/<%=product.image_path%>" alt="">
+                                        <!-- sale should be kept optional & appear if only there's a discount as mentioned in the product-price below-->
+                                        <div class="sale">Sale</div>
+                                        <div class="icon">
+                                            <!--puts the product in user's liked list-->
+                                            <i class="icon_heart_alt"></i>
+                                        </div>
+                                        <ul>
+		                                	<!--add to cart button-->
+		                                    <!-- <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li> -->
+		                                    <!--Takes user directly to checkout with this product in cart-->
+		                                    <li class="quick-view w-icon active"><a href="/add-to-cart/rqst-from-index-page/<%=product._id%>">Add To Cart</a></li>
+		                                </ul>
+                                    </div>
+                                    <div class="pi-text">
+                                        <!--this is product category-->
+                                        <div class="catagory-name"><%=product.category%></div>
+                                        <!--enter link to individual product page, check product.html-->
+                                        <a href="/product/<%=product._id%>">
+                                            <h5><%=product.product_name%></h5>
+                                        </a>
+                                        <!--this is product-price, the first price is the discounted one and the second one, that's inside <span>, is displayed with a slash on page-->
+                                        <div class="product-price">
+                                            ₹<%=product.discounted_price%>
+                                            <span>₹<%=product.original_price%></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Product end -->
+                                <%   }); %>
+                            </div>
+                        </div>
+                      </div>
+                      <% i++;}else{ i++;%>
+                        <div class="tab-pane fade " id="<%=categories[j].name.replace(/ /g,'').replace(/[^A-Z0-9]/ig, '_')%>small" role="tabpanel" aria-labelledby="home-tab<%=categories[j].name%>">
+                            <div class="container">
+                                 <div class="row">
+                                     <!--Product starts here-->
+                                     
+                                     <%categories[j].products.forEach(function(product){ %>
+                    
+                                     <div class="product-item col-6 col-md-3">
+                                         <div class="pi-pic">
+                                             <img src="/uploads/<%=product.image_path%>" alt="">
+                                             <!-- sale should be kept optional & appear if only there's a discount as mentioned in the product-price below-->
+                                             <div class="sale">SALE</div>
+                                             <div class="icon">
+                                                 <!--puts the product in user's liked list-->
+                                                 <i class="icon_heart_alt"></i>
+                                             </div>
+                                             <ul>
+                                                <!--add to cart button-->
+                                                <!-- <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li> -->
+                                                <!--Takes user directly to checkout with this product in cart-->
+                                                <li class="quick-view w-icon active"><a href="/add-to-cart/rqst-from-index-page/<%=product._id%>">Add To Cart</a></li>
+                                            </ul>
+                                         </div>
+                                         <div class="pi-text">
+                                             <!--this is product category-->
+                                             <div class="catagory-name"><%=product.category%></div>
+                                             <!--enter link to individual product page, check product.html-->
+                                             <a href="/product/<%=product._id%>">
+                                                 <h5><%=product.product_name%></h5>
+                                             </a>
+                                             <!--this is product-price, the first price is the discounted one and the second one, that's inside <span>, is displayed with a slash on page-->
+                                             <div class="product-price">
+                                                 ₹<%=product.discounted_price%>
+                                                 <span>₹<%=product.original_price%></span>
+                                             </div>
+                                         </div>
+                                     </div>
+                                     <!-- Product end -->
+                                     <%   }); %>
+                                 </div>
+                             </div>
+                           </div>
+                           <%    }     %>
+                    
+                      <% } %>
+                    
+                      
+                      <!-- <div class="tab-pane fade" id="brand2" role="tabpanel" aria-labelledby="profile-tab"></div> -->
+                      <!-- <div class="tab-pane fade" id="brand3" role="tabpanel" aria-labelledby="contact-tab"></div> -->
+                      <!-- <div class="tab-pane fade" id="brand4" role="tabpanel" aria-labelledby="contact-tab"></div> -->
+                    </div>
+				</div>
+               <div class="col-lg-3">
+                    <div class="product-large set-bg" data-setbg="img/products/man-large.jpg">
+                        <h2>PRODUCTS</h2>
+                        <a href="/all-products">Discover More</a>
+                    </div>
+                </div> 
+            </div>
+        </div>
+    </section>
 
     <!-- Partner Logo Section Begin -->
     <div class="partner-logo">
@@ -650,6 +933,36 @@
         $(document).ready(function() {
   $("#hero-banner").css("margin-top", $("header").height());
 });
+    </script>
+    <script>
+        function eventFire(el, etype){
+  if (el.fireEvent) {
+    el.fireEvent('on' + etype);
+  } else {
+    var evObj = document.createEvent('Events');
+    evObj.initEvent(etype, true, false);
+    el.dispatchEvent(evObj);
+  }
+}
+        $(document).ready(function() {
+        $("html").scroll(function(){
+            console.log(1);
+
+        });
+
+
+        var x = $('.slicknav_btn');
+        console.log(x);
+        $("body").scroll(function(){
+            $('.slicknav_btn').innerText('slicknav_collapsed');
+            console.log(1);
+
+        });
+        window.onscroll = function (e) {  
+            $('.slicknav_btn').addClass('slicknav_collapsed');
+        }
+});
+
     </script>
     <script src="/js/bootstrap.min.js"></script>
     <script src="/js/jquery-ui.min.js"></script>
